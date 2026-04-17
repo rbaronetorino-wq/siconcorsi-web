@@ -379,6 +379,50 @@
     }
     .privacy-note a:hover { text-decoration: underline; }
 
+    /* ── TRASPARENZA ─────────────────────────────────────────────── */
+    .trasparenza {
+      background: var(--bg);
+      padding: 72px 32px;
+      border-top: 1px solid var(--border);
+    }
+    .trasparenza-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .trasparenza h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--testo);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .trasparenza-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .tr-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .tr-card .tr-icon { font-size: 22px; margin-bottom: 10px; }
+    .tr-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--testo); }
+    .tr-card p  { font-size: 13px; color: var(--sub); line-height: 1.55; }
+    .trasparenza-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.7;
+    }
+    .trasparenza-note strong { color: var(--testo); }
+
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer {
       background: var(--g1);
@@ -422,6 +466,7 @@
   <div class="nav-links">
     <a href="#download">Download</a>
     <a href="#op">S.I.Concorsi Op</a>
+    <a href="#trasparenza">Trasparenza</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="mailto:rbarone.torino@gmail.com">Contatti</a>
   </div>
@@ -490,9 +535,9 @@
     </div>
   </div>
 
-  <!-- Testo descrittivo unico sotto i caroselli (Lorem ipsum — da sostituire) -->
+  <!-- Testo descrittivo hero -->
   <p class="hero-caption">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    S.I.Concorsi FISE è il compendio mobile al sistema ufficiale di iscrizioni FISE — pensato per chi vive il concorso da dentro. Cavalieri e istruttori che seguono i propri binomi, comitati organizzatori che monitorano le iscrizioni, segreterie che verificano il programma gare: tutto il necessario per restare aggiornati in tempo reale, direttamente dal proprio smartphone o tablet. Copre tutte le discipline previste dalla Federazione Italiana Sport Equestri e restituisce i dati ufficiali pubblicati su servizi.fise.it, velocizzandone l'accesso e ottimizzandone la lettura per gli schermi dei dispositivi portatili. È inoltre possibile collegarsi direttamente alla piattaforma servizi.fise.it per effettuare le proprie iscrizioni.
   </p>
 </section>
 
@@ -569,6 +614,35 @@
     <span class="op-chip">📱 Android · iOS · Windows</span>
   </div>
   <div class="op-wip">⏳ &nbsp;In sviluppo — maggiori informazioni presto</div>
+</section>
+
+<!-- ── TRASPARENZA ─────────────────────────────────────────────────── -->
+<section class="trasparenza" id="trasparenza">
+  <div class="trasparenza-inner">
+    <h2>Trasparenza e utilizzo corretto</h2>
+
+    <div class="trasparenza-grid">
+      <div class="tr-card">
+        <div class="tr-icon">👁</div>
+        <h3>Solo lettura</h3>
+        <p>L'app non modifica, non inserisce e non cancella alcun dato sui sistemi FISE. Si limita a visualizzare ciò che è già disponibile sul portale ufficiale.</p>
+      </div>
+      <div class="tr-card">
+        <div class="tr-icon">🔐</div>
+        <h3>Dati tuoi, solo tuoi</h3>
+        <p>L'app non mostra dati a cui l'utente non potrebbe accedere autonomamente con le proprie credenziali su servizi.fise.it.</p>
+      </div>
+      <div class="tr-card">
+        <div class="tr-icon">🔗</div>
+        <h3>Iscrizioni sul sito ufficiale</h3>
+        <p>Per operazioni che richiedono interazione — come le iscrizioni ai concorsi — l'app apre direttamente la piattaforma ufficiale servizi.fise.it.</p>
+      </div>
+    </div>
+
+    <div class="trasparenza-note">
+      <strong>Credenziali FISE —</strong> Le credenziali richieste dall'app sono quelle rilasciate dalla Federazione Italiana Sport Equestri attraverso i propri canali ufficiali, le stesse utilizzate per accedere a servizi.fise.it. Esistono tre tipologie: per <strong>cavalieri e istruttori</strong> (iscrizioni ai concorsi), per <strong>comitati organizzatori</strong> e per <strong>operatori del settore</strong> (giudici, segreterie, direttori di campo). Per richiedere o recuperare le proprie credenziali fare riferimento ai canali ufficiali FISE.
+    </div>
+  </div>
 </section>
 
 <!-- ── PRIVACY NOTE ────────────────────────────────────────────────── -->
