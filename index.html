@@ -30,6 +30,36 @@
       line-height: 1.6;
     }
 
+    /* ── BACK TO TOP ─────────────────────────────────────────────── */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 46px;
+      height: 46px;
+      background: var(--g1);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      pointer-events: none;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #back-to-top:hover { background: var(--g2); }
+
     /* ── NAV ─────────────────────────────────────────────────────── */
     nav {
       background: var(--g1);
@@ -201,7 +231,7 @@
     .feature-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
     .feature-card p { font-size: 13.5px; color: var(--sub); line-height: 1.55; }
 
-    /* ── DOWNLOAD ────────────────────────────────────────────────── */
+    /* ── DOWNLOAD + CAROUSEL ─────────────────────────────────────── */
     .download {
       background: var(--card);
       padding: 88px 32px;
@@ -211,21 +241,112 @@
     .download-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 24px;
-      max-width: 940px;
+      gap: 32px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .dl-card {
       border: 2px solid var(--border);
       border-radius: 20px;
-      padding: 36px 28px 28px;
+      padding: 32px 24px 28px;
       text-align: center;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .dl-card:hover { border-color: var(--g3); box-shadow: 0 6px 28px rgba(27,94,32,0.09); }
     .dl-card .pl-icon { font-size: 44px; margin-bottom: 14px; }
     .dl-card h3 { font-size: 21px; font-weight: 700; margin-bottom: 10px; }
-    .dl-card p { font-size: 14px; color: var(--sub); line-height: 1.55; margin-bottom: 28px; }
+    .dl-card > p { font-size: 14px; color: var(--sub); line-height: 1.55; margin-bottom: 20px; }
+
+    /* Carosello screenshot */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #F0F4F0;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+    /* Slide: aspect ratio 9:16 per telefono, 4:3 per tablet/desktop */
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 9/16;
+      background: #E8EDE8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #90A890;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .carousel-slide.wide { aspect-ratio: 4/3; }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+    .carousel-slide .slide-placeholder { font-size: 36px; opacity: 0.4; }
+
+    /* Frecce laterali */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.88);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.15s;
+      color: var(--testo);
+    }
+    .carousel-btn:hover { background: #fff; }
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
+
+    /* Pallini indicatori */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 10px 0 6px;
+    }
+    .carousel-dots .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .carousel-dots .dot.active {
+      background: var(--g2);
+      transform: scale(1.3);
+    }
+
+    /* Testo descrittivo sotto il carosello */
+    .carousel-caption {
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.6;
+      text-align: left;
+      margin-bottom: 24px;
+      padding: 0 2px;
+    }
 
     .btn-dl {
       display: inline-flex;
@@ -303,10 +424,14 @@
       .features, .download, .privacy-note { padding: 60px 20px; }
       .phone-mockup { width: 120px; height: 230px; }
       .tablet-mockup { width: 220px; height: 160px; }
+      #back-to-top { bottom: 20px; right: 18px; }
     }
   </style>
 </head>
 <body>
+
+<!-- ── FRECCIA TORNA SU ────────────────────────────────────────────── -->
+<button id="back-to-top" title="Torna in cima" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- ── NAVIGAZIONE ─────────────────────────────────────────────────── -->
 <nav>
@@ -381,28 +506,107 @@
   <p class="section-sub">Un'unica app nativa — telefono, tablet e desktop</p>
   <div class="download-grid">
 
+    <!-- ── ANDROID ── -->
     <div class="dl-card" id="android">
       <div class="pl-icon">🤖</div>
       <h3>Android</h3>
       <p>Per smartphone e tablet Android. Layout adattivo dedicato al tablet, con sidebar e pannello impostazioni animato.</p>
+
+      <!-- Carosello Android (5 slide) -->
+      <div class="carousel" id="car-android">
+        <div class="carousel-track">
+          <div class="carousel-slide"><span class="slide-placeholder">📱</span><span>Schermata ricerca</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">📋</span><span>Risultati concorsi</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">📊</span><span>Statistiche</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">👥</span><span>Lista iscritti</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">⚙️</span><span>Impostazioni</span></div>
+        </div>
+        <button class="carousel-btn prev" onclick="carMove('car-android',-1)">‹</button>
+        <button class="carousel-btn next" onclick="carMove('car-android', 1)">›</button>
+      </div>
+      <div class="carousel-dots" id="dots-car-android">
+        <span class="dot active" onclick="carGo('car-android',0)"></span>
+        <span class="dot" onclick="carGo('car-android',1)"></span>
+        <span class="dot" onclick="carGo('car-android',2)"></span>
+        <span class="dot" onclick="carGo('car-android',3)"></span>
+        <span class="dot" onclick="carGo('car-android',4)"></span>
+      </div>
+
+      <!-- Testo descrittivo (Lorem ipsum — da sostituire) -->
+      <p class="carousel-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cerca concorsi ippici FISE direttamente dal tuo smartphone Android: filtra per disciplina, organizzatore e data, consulta gli iscritti e segui il programma gare in tempo reale. Ottimizzato per telefono e tablet, con tema chiaro e scuro.
+      </p>
+
       <a href="https://play.google.com/store/apps/details?id=com.essecilab.siconcorsi"
-         class="btn-dl btn-android">
-        ▶&nbsp; Google Play
-      </a>
+         class="btn-dl btn-android">▶&nbsp; Google Play</a>
     </div>
 
+    <!-- ── WINDOWS ── -->
     <div class="dl-card" id="windows">
       <div class="pl-icon">🖥</div>
       <h3>Windows</h3>
       <p>Per PC e laptop. Layout ottimizzato per mouse e tastiera, con funzionalità avanzate per organizzatori e segreterie.</p>
+
+      <!-- Carosello Windows (5 slide - wide) -->
+      <div class="carousel" id="car-windows">
+        <div class="carousel-track">
+          <div class="carousel-slide wide"><span class="slide-placeholder">🖥</span><span>Schermata principale</span></div>
+          <div class="carousel-slide wide"><span class="slide-placeholder">📋</span><span>Risultati concorsi</span></div>
+          <div class="carousel-slide wide"><span class="slide-placeholder">📊</span><span>Statistiche avanzate</span></div>
+          <div class="carousel-slide wide"><span class="slide-placeholder">👥</span><span>Gestione iscritti</span></div>
+          <div class="carousel-slide wide"><span class="slide-placeholder">⚙️</span><span>Impostazioni desktop</span></div>
+        </div>
+        <button class="carousel-btn prev" onclick="carMove('car-windows',-1)">‹</button>
+        <button class="carousel-btn next" onclick="carMove('car-windows', 1)">›</button>
+      </div>
+      <div class="carousel-dots" id="dots-car-windows">
+        <span class="dot active" onclick="carGo('car-windows',0)"></span>
+        <span class="dot" onclick="carGo('car-windows',1)"></span>
+        <span class="dot" onclick="carGo('car-windows',2)"></span>
+        <span class="dot" onclick="carGo('car-windows',3)"></span>
+        <span class="dot" onclick="carGo('car-windows',4)"></span>
+      </div>
+
+      <!-- Testo descrittivo (Lorem ipsum — da sostituire) -->
+      <p class="carousel-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. La versione desktop di S.I.Concorsi FISE porta tutta la potenza del portale FISE sul tuo PC Windows: layout multi-pannello ottimizzato per grandi schermi, navigazione da tastiera e funzionalità pensate per organizzatori e segreterie di concorso.
+      </p>
+
       <span class="btn-dl btn-soon">⏳&nbsp; Prossimamente</span>
       <br><span class="badge-wip">In sviluppo</span>
     </div>
 
+    <!-- ── iOS ── -->
     <div class="dl-card" id="ios">
       <div class="pl-icon">🍎</div>
       <h3>iPhone &amp; iPad</h3>
       <p>La stessa esperienza su iOS, con il layout tablet ottimizzato per iPad e la fluidità tipica dell'ecosistema Apple.</p>
+
+      <!-- Carosello iOS (5 slide) -->
+      <div class="carousel" id="car-ios">
+        <div class="carousel-track">
+          <div class="carousel-slide"><span class="slide-placeholder">📱</span><span>Schermata ricerca</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">📋</span><span>Risultati concorsi</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">📊</span><span>Statistiche</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">👥</span><span>Lista iscritti</span></div>
+          <div class="carousel-slide"><span class="slide-placeholder">🍎</span><span>Layout iPad</span></div>
+        </div>
+        <button class="carousel-btn prev" onclick="carMove('car-ios',-1)">‹</button>
+        <button class="carousel-btn next" onclick="carMove('car-ios', 1)">›</button>
+      </div>
+      <div class="carousel-dots" id="dots-car-ios">
+        <span class="dot active" onclick="carGo('car-ios',0)"></span>
+        <span class="dot" onclick="carGo('car-ios',1)"></span>
+        <span class="dot" onclick="carGo('car-ios',2)"></span>
+        <span class="dot" onclick="carGo('car-ios',3)"></span>
+        <span class="dot" onclick="carGo('car-ios',4)"></span>
+      </div>
+
+      <!-- Testo descrittivo (Lorem ipsum — da sostituire) -->
+      <p class="carousel-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. S.I.Concorsi FISE su iPhone e iPad offre la stessa esperienza fluida di Android, con il design nativo iOS e il layout a due colonne ottimizzato per iPad. Tutti i dati FISE sempre a portata di mano, con la fluidità che ti aspetti dall'ecosistema Apple.
+      </p>
+
       <span class="btn-dl btn-soon">⏳&nbsp; Prossimamente</span>
       <br><span class="badge-wip">In sviluppo</span>
     </div>
@@ -424,6 +628,55 @@
   <a href="mailto:rbarone.torino@gmail.com">Contatti</a><br>
   © 2026 Esseci Lab &nbsp;·&nbsp; App non ufficiale — dati forniti da FISE.it
 </footer>
+
+<!-- ── JAVASCRIPT ──────────────────────────────────────────────────── -->
+<script>
+  // ── Back to top: appare dopo 300px di scroll ──────────────────────
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // ── Carosello ─────────────────────────────────────────────────────
+  // Stato corrente per ogni carosello (indice slide attiva)
+  const carState = {};
+
+  function carInit(id) {
+    if (carState[id] === undefined) carState[id] = 0;
+  }
+
+  function carMove(id, dir) {
+    carInit(id);
+    const track = document.querySelector('#' + id + ' .carousel-track');
+    const count = track.children.length;
+    carState[id] = (carState[id] + dir + count) % count;
+    carApply(id);
+  }
+
+  function carGo(id, index) {
+    carInit(id);
+    carState[id] = index;
+    carApply(id);
+  }
+
+  function carApply(id) {
+    const track = document.querySelector('#' + id + ' .carousel-track');
+    track.style.transform = `translateX(-${carState[id] * 100}%)`;
+    // Aggiorna i pallini
+    const dots = document.querySelectorAll('#dots-' + id + ' .dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === carState[id]));
+  }
+
+  // Swipe touch per i caroselli
+  document.querySelectorAll('.carousel').forEach(car => {
+    let startX = 0;
+    car.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    car.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) carMove(car.id, dx < 0 ? 1 : -1);
+    });
+  });
+</script>
 
 </body>
 </html>
