@@ -104,103 +104,104 @@
       font-weight: 300;
     }
 
-    /* ── CAROSELLI HERO ──────────────────────────────────────────── */
-    .hero-carousels {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 22px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+    /* ── CAROSELLO HERO (unico, responsive) ─────────────────────── */
+    .hero-carousel-wrap {
+      max-width: 560px;
+      margin: 0 auto 36px;
     }
-
-    /* Contenitore carosello hero con cornice dispositivo */
-    .hcar-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .hcar-wrap.phone  { width: 148px; }
-    .hcar-wrap.tablet { width: 260px; }
 
     .hcar {
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
-      border: 2px solid rgba(255,255,255,0.30);
+      border-radius: 18px;
+      border: 2px solid rgba(255,255,255,0.28);
       background: rgba(255,255,255,0.10);
       user-select: none;
     }
-    .hcar-wrap.phone  .hcar { border-radius: 24px; }
-    .hcar-wrap.tablet .hcar { border-radius: 16px; }
 
     .hcar-track {
       display: flex;
       transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
     }
 
-    /* Slide — aspect ratio adattivo al tipo di dispositivo */
+    /* Ogni slide: etichetta dispositivo + area immagine */
     .hcar-slide {
       min-width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.50);
-      font-size: 10px;
-      font-weight: 500;
+      padding: 28px 20px 22px;
+      gap: 14px;
+      color: rgba(255,255,255,0.55);
     }
-    .hcar-wrap.phone  .hcar-slide { aspect-ratio: 9/16; }
-    .hcar-wrap.tablet .hcar-slide { aspect-ratio: 4/3;  }
-    .hcar-slide img {
+    .hcar-slide .slide-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.70;
+    }
+    /* Cornice immagine — proporzione adattiva al dispositivo */
+    .hcar-slide .slide-frame {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.40);
+      font-size: 12px;
+    }
+    .hcar-slide.phone  .slide-frame { aspect-ratio: 9/16; max-width: 180px; }
+    .hcar-slide.tablet .slide-frame { aspect-ratio: 4/3;  max-width: 100%; }
+    .hcar-slide.desktop .slide-frame { aspect-ratio: 16/9; max-width: 100%; }
+    .hcar-slide .slide-frame img {
       width: 100%; height: 100%;
       object-fit: cover;
+      border-radius: 11px;
       display: block;
     }
-    .hcar-slide .si { font-size: 24px; opacity: 0.45; }
+    .hcar-slide .slide-frame .fi { font-size: 32px; opacity: 0.40; }
 
-    /* Frecce */
+    /* Frecce laterali */
     .hcar-btn {
       position: absolute;
       top: 50%; transform: translateY(-50%);
       background: rgba(0,0,0,0.30);
-      border: none;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      font-size: 16px;
-      cursor: pointer;
-      color: #fff;
+      border: none; border-radius: 50%;
+      width: 34px; height: 34px;
+      font-size: 20px;
+      cursor: pointer; color: #fff;
       display: flex; align-items: center; justify-content: center;
       z-index: 2;
       transition: background 0.15s;
     }
     .hcar-btn:hover { background: rgba(0,0,0,0.50); }
-    .hcar-btn.prev { left: 5px; }
-    .hcar-btn.next { right: 5px; }
+    .hcar-btn.prev { left: 8px; }
+    .hcar-btn.next { right: 8px; }
 
     /* Pallini */
     .hcar-dots {
-      display: flex;
-      gap: 5px;
+      display: flex; gap: 6px;
       justify-content: center;
+      margin-top: 14px;
     }
     .hcar-dots .dot {
-      width: 6px; height: 6px;
+      width: 7px; height: 7px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.30);
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
     }
-    .hcar-dots .dot.active {
-      background: #fff;
-      transform: scale(1.3);
-    }
+    .hcar-dots .dot.active { background: #fff; transform: scale(1.3); }
 
-    /* Lorem ipsum sotto i caroselli */
+    /* Testo descrittivo sotto il carosello */
     .hero-caption {
-      max-width: 640px;
+      max-width: 580px;
       margin: 0 auto;
       font-size: 15px;
       font-weight: 300;
@@ -366,76 +367,63 @@
   <h1>I concorsi ippici <em>FISE</em><br>nel palmo della mano</h1>
   <p>Cerca concorsi, consulta iscritti, statistiche e programma gare — ovunque tu sia, su qualsiasi dispositivo.</p>
 
-  <!-- 3 caroselli: telefono · tablet · telefono — 5 slide ciascuno -->
-  <div class="hero-carousels">
+  <!-- Carosello unico: 2 slide telefono + 2 tablet + 1 desktop -->
+  <div class="hero-carousel-wrap">
+    <div class="hcar" id="hc1">
+      <div class="hcar-track">
 
-    <!-- Carosello telefono sx -->
-    <div class="hcar-wrap phone">
-      <div class="hcar" id="hc1">
-        <div class="hcar-track">
-          <div class="hcar-slide"><span class="si">📱</span><span>Home ricerca</span></div>
-          <div class="hcar-slide"><span class="si">🔍</span><span>Filtri avanzati</span></div>
-          <div class="hcar-slide"><span class="si">📋</span><span>Risultati</span></div>
-          <div class="hcar-slide"><span class="si">📊</span><span>Statistiche</span></div>
-          <div class="hcar-slide"><span class="si">⚙️</span><span>Impostazioni</span></div>
+        <div class="hcar-slide phone">
+          <span class="slide-label">📱 Android — Telefono</span>
+          <div class="slide-frame">
+            <span class="fi">📱</span>
+            <span>Schermata ricerca</span>
+          </div>
         </div>
-        <button class="hcar-btn prev" onclick="hcMove('hc1',-1)">‹</button>
-        <button class="hcar-btn next" onclick="hcMove('hc1', 1)">›</button>
-      </div>
-      <div class="hcar-dots" id="dots-hc1">
-        <span class="dot active" onclick="hcGo('hc1',0)"></span>
-        <span class="dot" onclick="hcGo('hc1',1)"></span>
-        <span class="dot" onclick="hcGo('hc1',2)"></span>
-        <span class="dot" onclick="hcGo('hc1',3)"></span>
-        <span class="dot" onclick="hcGo('hc1',4)"></span>
-      </div>
-    </div>
 
-    <!-- Carosello tablet centro -->
-    <div class="hcar-wrap tablet">
-      <div class="hcar" id="hc2">
-        <div class="hcar-track">
-          <div class="hcar-slide"><span class="si">⬛</span><span>Layout tablet</span></div>
-          <div class="hcar-slide"><span class="si">🔍</span><span>Ricerca sidebar</span></div>
-          <div class="hcar-slide"><span class="si">📋</span><span>Dettaglio concorso</span></div>
-          <div class="hcar-slide"><span class="si">📊</span><span>Statistiche</span></div>
-          <div class="hcar-slide"><span class="si">⚙️</span><span>Impostazioni</span></div>
+        <div class="hcar-slide phone">
+          <span class="slide-label">📱 Android — Telefono</span>
+          <div class="slide-frame">
+            <span class="fi">📋</span>
+            <span>Risultati e dettaglio</span>
+          </div>
         </div>
-        <button class="hcar-btn prev" onclick="hcMove('hc2',-1)">‹</button>
-        <button class="hcar-btn next" onclick="hcMove('hc2', 1)">›</button>
-      </div>
-      <div class="hcar-dots" id="dots-hc2">
-        <span class="dot active" onclick="hcGo('hc2',0)"></span>
-        <span class="dot" onclick="hcGo('hc2',1)"></span>
-        <span class="dot" onclick="hcGo('hc2',2)"></span>
-        <span class="dot" onclick="hcGo('hc2',3)"></span>
-        <span class="dot" onclick="hcGo('hc2',4)"></span>
-      </div>
-    </div>
 
-    <!-- Carosello telefono dx -->
-    <div class="hcar-wrap phone">
-      <div class="hcar" id="hc3">
-        <div class="hcar-track">
-          <div class="hcar-slide"><span class="si">👥</span><span>Lista iscritti</span></div>
-          <div class="hcar-slide"><span class="si">🐴</span><span>Dettaglio binomio</span></div>
-          <div class="hcar-slide"><span class="si">📅</span><span>Programma gare</span></div>
-          <div class="hcar-slide"><span class="si">🏆</span><span>Montepremi</span></div>
-          <div class="hcar-slide"><span class="si">🌙</span><span>Tema scuro</span></div>
+        <div class="hcar-slide tablet">
+          <span class="slide-label">⬛ Android — Tablet</span>
+          <div class="slide-frame">
+            <span class="fi">⬛</span>
+            <span>Layout sidebar</span>
+          </div>
         </div>
-        <button class="hcar-btn prev" onclick="hcMove('hc3',-1)">‹</button>
-        <button class="hcar-btn next" onclick="hcMove('hc3', 1)">›</button>
-      </div>
-      <div class="hcar-dots" id="dots-hc3">
-        <span class="dot active" onclick="hcGo('hc3',0)"></span>
-        <span class="dot" onclick="hcGo('hc3',1)"></span>
-        <span class="dot" onclick="hcGo('hc3',2)"></span>
-        <span class="dot" onclick="hcGo('hc3',3)"></span>
-        <span class="dot" onclick="hcGo('hc3',4)"></span>
-      </div>
-    </div>
 
-  </div><!-- fine hero-carousels -->
+        <div class="hcar-slide tablet">
+          <span class="slide-label">⬛ Android — Tablet</span>
+          <div class="slide-frame">
+            <span class="fi">📊</span>
+            <span>Dettaglio concorso landscape</span>
+          </div>
+        </div>
+
+        <div class="hcar-slide desktop">
+          <span class="slide-label">🖥 Windows — Desktop</span>
+          <div class="slide-frame">
+            <span class="fi">🖥</span>
+            <span>Prossimamente</span>
+          </div>
+        </div>
+
+      </div>
+      <button class="hcar-btn prev" onclick="hcMove('hc1',-1)">‹</button>
+      <button class="hcar-btn next" onclick="hcMove('hc1', 1)">›</button>
+    </div>
+    <div class="hcar-dots" id="dots-hc1">
+      <span class="dot active" onclick="hcGo('hc1',0)"></span>
+      <span class="dot" onclick="hcGo('hc1',1)"></span>
+      <span class="dot" onclick="hcGo('hc1',2)"></span>
+      <span class="dot" onclick="hcGo('hc1',3)"></span>
+      <span class="dot" onclick="hcGo('hc1',4)"></span>
+    </div>
+  </div>
 
   <!-- Testo descrittivo unico sotto i caroselli (Lorem ipsum — da sostituire) -->
   <p class="hero-caption">
@@ -527,13 +515,12 @@
     btn.classList.toggle('visible', window.scrollY > 300);
   });
 
-  // ── Caroselli hero ────────────────────────────────────────────────
+  // ── Carosello hero ────────────────────────────────────────────────
   const hcState = {};
 
   function hcMove(id, dir) {
     if (hcState[id] === undefined) hcState[id] = 0;
-    const track = document.querySelector('#' + id + ' .hcar-track');
-    const count = track.children.length;
+    const count = document.querySelector('#' + id + ' .hcar-track').children.length;
     hcState[id] = (hcState[id] + dir + count) % count;
     hcApply(id);
   }
