@@ -253,7 +253,7 @@
       margin-bottom: 14px;
     }
     .feature-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p  { font-size: 13.5px; color: var(--sub); line-height: 1.55; }
+    .feature-card p  { font-size: 13.5px; color: var(--sub); line-height: 1.55; text-align: justify; }
 
     /* ── DOWNLOAD ────────────────────────────────────────────────── */
     .download {
@@ -304,43 +304,57 @@
     .op-teaser {
       background: linear-gradient(135deg, #0D2B12 0%, #1B4020 60%, #1A3A1C 100%);
       color: #fff;
-      padding: 80px 32px;
+      padding: 120px 32px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Alone luminoso decorativo centrato */
+    .op-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(129,199,132,0.13) 0%, transparent 70%);
+      pointer-events: none;
     }
     .op-badge {
       display: inline-block;
       background: rgba(129,199,132,0.18);
-      border: 1px solid rgba(129,199,132,0.40);
+      border: 1px solid rgba(129,199,132,0.50);
       color: var(--ga);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      padding: 5px 16px;
+      padding: 6px 20px;
       border-radius: 20px;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
     .op-teaser h2 {
-      font-size: clamp(22px, 4vw, 38px);
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
     }
     .op-teaser h2 em { color: var(--ga); font-style: normal; }
-    .op-teaser p {
-      font-size: 16px;
+    .op-lead {
+      font-size: 17px;
       font-weight: 300;
-      opacity: 0.82;
-      max-width: 560px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
+      opacity: 0.85;
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+      position: relative;
     }
     .op-chips {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 36px;
+      margin-bottom: 48px;
+      position: relative;
     }
     .op-chip {
       background: rgba(255,255,255,0.08);
@@ -348,16 +362,36 @@
       color: rgba(255,255,255,0.80);
       font-size: 13px;
       font-weight: 500;
-      padding: 7px 18px;
+      padding: 8px 20px;
       border-radius: 20px;
     }
+    .op-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }
+    .op-cta {
+      display: inline-block;
+      background: var(--ga);
+      color: #0D2B12;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: opacity 0.2s;
+    }
+    .op-cta:hover { opacity: 0.88; }
     .op-wip {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.20);
-      color: rgba(255,255,255,0.60);
+      color: rgba(255,255,255,0.55);
       font-size: 13px;
       font-weight: 500;
       padding: 10px 24px;
@@ -411,17 +445,10 @@
     }
     .tr-card .tr-icon { font-size: 22px; margin-bottom: 10px; }
     .tr-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--testo); }
-    .tr-card p  { font-size: 13px; color: var(--sub); line-height: 1.55; }
+    .tr-card p  { font-size: 13px; color: var(--sub); line-height: 1.55; text-align: justify; }
     .trasparenza-note {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 24px;
-      font-size: 14px;
-      color: var(--sub);
-      line-height: 1.7;
+      grid-column: 1 / -1;  /* occupa tutta la larghezza della grid */
     }
-    .trasparenza-note strong { color: var(--testo); }
 
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer {
@@ -465,8 +492,8 @@
   </div>
   <div class="nav-links">
     <a href="#download">Download</a>
-    <a href="#op">S.I. Concorsi Op</a>
     <a href="#trasparenza">Trasparenza</a>
+    <a href="#op">S.I. Concorsi Op</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="mailto:essecilab.equitazione@gmail.com">Contatti</a>
   </div>
@@ -567,7 +594,7 @@
     <div class="feature-card">
       <div class="feature-icon">📋</div>
       <h3>Programma gare</h3>
-      <p>Categoria, formula di gara e montepremi per ogni giornata. Pianifica i tempi della trasferta sapendo esattamente cosa ti aspetta.</p>
+      <p>Categoria, formula di gara e montepremi per ogni giornata. Pianifica la tua trasferta sapendo esattamente cosa ti aspetta.</p>
     </div>
   </div>
 </section>
@@ -605,20 +632,6 @@
   </div>
 </section>
 
-<!-- ── S.I. CONCORSI OP — TEASER ───────────────────────────────────── -->
-<section class="op-teaser" id="op">
-  <div class="op-badge">Prossimamente</div>
-  <h2>S.I.Concorsi <em>Op</em></h2>
-  <p>L'app per gli operatori di concorso. Gestisci l'accettazione delle cariche — giudici, direttori di campo e segreterie — direttamente dal tuo smartphone, ovunque ti trovi.</p>
-  <div class="op-chips">
-    <span class="op-chip">📋 Accettazione cariche</span>
-    <span class="op-chip">📍 In mobilità</span>
-    <span class="op-chip">🔗 Connette a servizi.fise.it</span>
-    <span class="op-chip">📱 Android · iOS · Windows</span>
-  </div>
-  <div class="op-wip">⏳ &nbsp;In sviluppo — maggiori informazioni presto</div>
-</section>
-
 <!-- ── TRASPARENZA ─────────────────────────────────────────────────── -->
 <section class="trasparenza" id="trasparenza">
   <div class="trasparenza-inner">
@@ -640,10 +653,11 @@
         <h3>Iscrizioni sul sito ufficiale</h3>
         <p>Per operazioni che richiedono interazione — come le iscrizioni ai concorsi — l'app collega l'utente direttamente alla piattaforma servizi.fise.it.</p>
       </div>
-    </div>
-
-    <div class="trasparenza-note">
-      <strong>Credenziali per servizi.fise.it —</strong> Le credenziali richieste dall'app sono quelle rilasciate dalla Federazione Italiana Sport Equestri attraverso i propri canali, le stesse utilizzate per accedere a servizi.fise.it. Esistono tre tipologie: per <strong>cavalieri e istruttori</strong> (iscrizioni ai concorsi), per <strong>comitati organizzatori</strong> e per <strong>operatori del settore</strong> (giudici, segreterie, direttori di campo). Per richiedere o recuperare le proprie credenziali fare riferimento ai canali ufficiali della Federazione Italiana Sport Equestri.
+      <div class="tr-card trasparenza-note">
+        <div class="tr-icon">📋</div>
+        <h3>Credenziali per servizi.fise.it</h3>
+        <p>Le credenziali richieste dall'app sono quelle rilasciate dalla Federazione Italiana Sport Equestri attraverso i propri canali, le stesse utilizzate per accedere a servizi.fise.it. Esistono tre tipologie: per cavalieri e istruttori (iscrizioni ai concorsi), per comitati organizzatori e per operatori del settore (giudici, segreterie, direttori di campo). Per richiedere o recuperare le proprie credenziali fare riferimento ai canali ufficiali della Federazione Italiana Sport Equestri.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -653,6 +667,24 @@
   <h2>🔒 La tua privacy è al sicuro</h2>
   <p>S.I. Concorsi Eq non raccoglie né trasmette alcun dato personale. Le credenziali vengono salvate esclusivamente sul tuo dispositivo in forma cifrata e non passano mai per i nostri server.</p>
   <a href="privacy.html">Leggi la Privacy Policy completa →</a>
+</section>
+
+<!-- ── S.I. CONCORSI OP — TEASER ───────────────────────────────────── -->
+<section class="op-teaser" id="op">
+  <div class="op-glow"></div>
+  <div class="op-badge">Prossimamente</div>
+  <h2>S.I.Concorsi <em>Op</em></h2>
+  <p class="op-lead">L'app per gli operatori di concorso.<br>Gestisci l'accettazione delle cariche — giudici, direttori di campo e segreterie — direttamente dal tuo smartphone, ovunque ti trovi.</p>
+  <div class="op-chips">
+    <span class="op-chip">📋 Accettazione cariche</span>
+    <span class="op-chip">📍 In mobilità</span>
+    <span class="op-chip">🔗 Connette a servizi.fise.it</span>
+    <span class="op-chip">📱 Android · iOS · Windows</span>
+  </div>
+  <div class="op-cta-row">
+    <a class="op-cta" href="mailto:essecilab.equitazione@gmail.com?subject=S.I.Concorsi Op — avvisami">✉ Avvisami quando è disponibile</a>
+    <div class="op-wip">⏳ &nbsp;In sviluppo — maggiori informazioni presto</div>
+  </div>
 </section>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
