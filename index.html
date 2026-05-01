@@ -299,6 +299,29 @@
       border-radius: 20px;
       margin-top: 10px;
     }
+    /* ── QR CODE ──────────────────────────────────────────────── */
+    .qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .qr-wrap img {
+      width: 140px;
+      height: 140px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      display: block;
+    }
+    .qr-caption {
+      font-size: 12px;
+      color: var(--sub);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
 
     /* ── OP TEASER ───────────────────────────────────────────────── */
     .op-teaser {
@@ -611,6 +634,13 @@
       <p>Per smartphone e tablet Android. Layout adattivo dedicato al tablet, con sidebar e pannello impostazioni animato. Supporta tema chiaro, scuro e automatico (tema di sistema).</p>
       <a href="https://play.google.com/store/apps/details?id=com.essecilab.siconcorsi"
          class="btn-dl btn-android">▶&nbsp; Google Play</a>
+
+      <div class="qr-wrap">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.essecilab.siconcorsi&color=1B5E20&bgcolor=ffffff&margin=10"
+             alt="QR code Google Play — S.I. Concorsi Eq"
+             loading="lazy">
+        <span class="qr-caption">📷 Inquadra con la fotocamera per scaricare</span>
+      </div>
     </div>
 
     <div class="dl-card" id="windows">
