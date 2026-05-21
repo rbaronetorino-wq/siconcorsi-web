@@ -922,19 +922,11 @@
   // ─────────────────────────────────────────────────────────────────────
   // LISTA EMAIL TESTER — aggiungi/rimuovi email in minuscolo
   // ─────────────────────────────────────────────────────────────────────
-  const TESTER_ANDROID = [
-    "danielapecchioli3107@gmail.com",
-    "emma.stella.restivo@gmail.com",
-    "horsebridge.club@gmail.com",
-    "ixellesas@gmail.com",
-    "lauramongiovi1607@gmail.com",
-    "manumarrocu@gmail.com",
-    "mariateresa.dellaquila@gmail.com",
-    "matteo.massaglia@gmail.com",
-    "patri.stima@gmail.com",
-    "rbarone.torino@gmail.com",
-    "davidesartore@gmail.com",
-  ];
+  let TESTER_ANDROID = [];  // Lista email caricata da tester_android.txt
+    (async () => {
+          const r = await fetch('tester_android.txt?t=' + Date.now());
+          TESTER_ANDROID = (await r.text()).split('\n').map(e => e.trim().toLowerCase()).filter(Boolean);
+    })();
 
   const TESTER_IOS = [
     // inserire qui le email dei tester ios, es:
