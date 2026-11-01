@@ -492,118 +492,41 @@
       border-radius: 20px;
       padding: 36px 28px 28px;
       text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
       background: var(--card);
     }
-    .tester-card:hover {
-      border-color: var(--g3);
-      box-shadow: 0 6px 28px rgba(27,94,32,0.10);
-      transform: translateY(-2px);
-    }
-    .tester-card.active {
-      border-color: var(--g2);
-      box-shadow: 0 6px 28px rgba(27,94,32,0.15);
-    }
     .tester-card .pl-icon { font-size: 44px; margin-bottom: 14px; }
-    .tester-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-    .tester-card p  { font-size: 14px; color: var(--sub); line-height: 1.55; margin-bottom: 24px; }
+    .tester-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+    /* Passaggi numerati dentro la scheda */
+    .tester-steps {
+      text-align: left;
+      font-size: 14px; color: var(--sub); line-height: 1.55;
+      padding-left: 20px;
+      margin-bottom: 24px;
+    }
+    .tester-steps li { margin-bottom: 6px; }
+    .tester-steps b { color: var(--testo); }
+    .tester-note {
+      font-size: 12.5px; color: var(--sub); line-height: 1.5;
+      margin-top: 18px;
+    }
+    .tester-contatto {
+      text-align: center;
+      font-size: 14px; color: var(--sub);
+    }
+    .tester-contatto a { color: var(--g1); font-weight: 600; }
     .btn-tester {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 24px;
       border-radius: 50px;
       background: var(--g1); color: #fff;
       font-weight: 600; font-size: 14px;
-      border: none; cursor: pointer;
+      text-decoration: none;
       transition: background 0.15s, transform 0.15s;
     }
     .btn-tester:hover { background: var(--g2); transform: translateY(-1px); }
 
-    /* Form email */
-    .tester-form {
-      max-width: 500px;
-      margin: 0 auto;
-      background: #F1F8F1;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 32px 28px;
-      animation: fadeIn 0.25s ease;
-    }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .tester-form label {
-      display: block;
-      font-size: 13px; font-weight: 600;
-      color: var(--sub);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-    .tform-row {
-      display: flex; gap: 10px;
-    }
-    .tform-row input {
-      flex: 1;
-      padding: 12px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--testo);
-      background: #fff;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    .tform-row input:focus { border-color: var(--g3); }
-    .tform-row button {
-      padding: 12px 22px;
-      border-radius: 50px;
-      background: var(--g1); color: #fff;
-      font-weight: 600; font-size: 14px;
-      border: none; cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s;
-    }
-    .tform-row button:hover { background: var(--g2); }
-
-    /* Risultato verifica */
-    #tester-result { margin-top: 22px; }
-    .tresult-ok {
-      background: #E8F5E9;
-      border: 1px solid #A5D6A7;
-      border-radius: 14px;
-      padding: 22px 20px;
-    }
-    .tresult-ok h4 {
-      font-size: 15px; font-weight: 700;
-      color: var(--g1); margin-bottom: 16px;
-    }
-    .tresult-link {
-      display: flex; align-items: center; gap: 10px;
-      padding: 13px 18px;
-      border-radius: 50px;
-      font-weight: 600; font-size: 14px;
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: opacity 0.15s;
-    }
-    .tresult-link:hover { opacity: 0.85; }
-    .tresult-link.primary { background: var(--g1); color: #fff; }
-    .tresult-link.secondary { background: #fff; color: var(--g1); border: 1.5px solid var(--g3); }
-    .tresult-err {
-      background: #FFF3E0;
-      border: 1px solid #FFCC80;
-      border-radius: 14px;
-      padding: 18px 20px;
-      font-size: 14px;
-      color: #E65100;
-      line-height: 1.55;
-    }
-    .tresult-err a { color: #E65100; font-weight: 600; }
-
     @media (max-width: 640px) {
       .tester-section { padding: 60px 20px; }
-      .tform-row { flex-direction: column; }
-      .tform-row input, .tform-row button { border-radius: 14px; width: 100%; }
     }
 
     /* ── FOOTER ──────────────────────────────────────────────────── */
@@ -792,36 +715,46 @@
 <!-- ── TESTER ──────────────────────────────────────────────────────── -->
 <section class="tester-section" id="tester">
   <h2 class="section-title">🧪 Area Tester</h2>
-  <p class="section-sub">Sei tra i tester alpha? Inserisci la tua email per accedere ai link e alla guida.</p>
+  <p class="section-sub">Sei tra i tester alpha? Ecco come installare l'app.</p>
 
+  <!-- Nessuna lista di email qui: la pagina è pubblica. L'accesso al test lo
+       controllano Google Play e Apple, che fanno entrare solo gli indirizzi
+       inseriti da noi nelle rispettive console. -->
   <div class="tester-grid">
-    <!-- Android -->
-    <div class="tester-card" id="tcard-android" onclick="showTesterForm('android')">
+    <!-- Android: link al TEST CHIUSO "Alpha" (è quello che conta per i
+         12 tester richiesti da Google, non il test interno) -->
+    <div class="tester-card">
       <div class="pl-icon">🤖</div>
-      <h3>Sono tester Android</h3>
-      <p>Accedi al programma di test su Google Play e scarica la guida per tester.</p>
-      <button class="btn-tester">Accedi come tester →</button>
+      <h3>Tester Android</h3>
+      <ol class="tester-steps">
+        <li>Dal <b>telefono</b>, apri il link qui sotto con l'account Google che ci hai comunicato</li>
+        <li>Tocca <b>«Diventa un tester»</b>, poi <b>«Scarica su Google Play»</b></li>
+        <li>Accedi con le tue credenziali di servizi.fise.it</li>
+        <li>Tieni l'app installata per almeno <b>14 giorni</b></li>
+      </ol>
+      <a class="btn-tester" href="https://play.google.com/apps/testing/com.siconcorsi.si_concorsi"
+         target="_blank" rel="noopener">Diventa tester su Google Play →</a>
+      <p class="tester-note">«Elemento non trovato»? Nel Play Store tocca la tua foto in alto
+        a destra e passa all'account Google giusto.</p>
     </div>
 
-    <!-- iOS -->
-    <div class="tester-card" id="tcard-ios" onclick="showTesterForm('ios')">
+    <!-- iOS: l'invito arriva per email da Apple (TestFlight) -->
+    <div class="tester-card">
       <div class="pl-icon">🍎</div>
-      <h3>Sono tester iOS</h3>
-      <p>Accedi alle istruzioni TestFlight per installare l'app su iPhone o iPad.</p>
-      <button class="btn-tester">Accedi come tester →</button>
+      <h3>Tester iPhone</h3>
+      <ol class="tester-steps">
+        <li>Installa dall'App Store l'app <b>TestFlight</b> di Apple</li>
+        <li>Apri l'email di Apple con l'invito a <b>S.I. Concorsi Eq</b></li>
+        <li>Tocca <b>«Visualizza in TestFlight»</b>, poi <b>«Installa»</b></li>
+      </ol>
+      <a class="btn-tester" href="https://apps.apple.com/it/app/testflight/id899247664"
+         target="_blank" rel="noopener">Scarica TestFlight →</a>
+      <p class="tester-note">Non trovi l'email di invito? Scrivici e te la facciamo rimandare.</p>
     </div>
   </div>
 
-  <!-- Form email (nascosto finché non si clicca) -->
-  <div class="tester-form" id="tester-form" style="display:none">
-    <label id="tform-label">La tua email</label>
-    <div class="tform-row">
-      <input type="email" id="tester-email" placeholder="nome@esempio.it"
-             onkeydown="if(event.key==='Enter') checkTesterEmail()">
-      <button onclick="checkTesterEmail()">Verifica →</button>
-    </div>
-    <div id="tester-result"></div>
-  </div>
+  <p class="tester-contatto">Vuoi diventare tester o hai bisogno di aiuto? Scrivi a
+    <a href="mailto:essecilab.equitazione@gmail.com">essecilab.equitazione@gmail.com</a></p>
 </section>
 
 <!-- ── TRASPARENZA ─────────────────────────────────────────────────── -->
@@ -915,119 +848,6 @@
       `translateX(-${hcState[id] * 100}%)`;
     document.querySelectorAll('#dots-' + id + ' .dot').forEach((d, i) =>
       d.classList.toggle('active', i === hcState[id]));
-  }
-
-  // ── Sezione Tester ───────────────────────────────────────────────────
-
-  // ─────────────────────────────────────────────────────────────────────
-  // LISTA EMAIL TESTER — aggiungi/rimuovi email in minuscolo
-  // ─────────────────────────────────────────────────────────────────────
-  let TESTER_ANDROID = [];  // Lista email caricata da tester_android.txt
-    (async () => {
-          const r = await fetch('tester_android.txt?t=' + Date.now());
-          TESTER_ANDROID = (await r.text()).split('\n').map(e => e.trim().toLowerCase()).filter(Boolean);
-    })();
-
-  const TESTER_IOS = [
-    // inserire qui le email dei tester ios, es:
-    // "mario.rossi@gmail.com",
-  ];
-
-  // Link Android tester
-  const LINK_ANDROID_TEST = "https://play.google.com/apps/internaltest/4701684900905252324";
-  const LINK_ANDROID_GUIDA = "guida_tester_android.pdf";
-
-  // Placeholder iOS (guida non ancora pronta)
-  const IOS_GUIDA_PRONTA = false;
-
-  // ─────────────────────────────────────────────────────────────────────
-
-  let piattaformaAttiva = null;
-
-  function showTesterForm(piattaforma) {
-    piattaformaAttiva = piattaforma;
-
-    // Evidenzia la card selezionata
-    document.querySelectorAll('.tester-card').forEach(c => c.classList.remove('active'));
-    document.getElementById('tcard-' + piattaforma).classList.add('active');
-
-    // Mostra il form
-    const form = document.getElementById('tester-form');
-    form.style.display = 'block';
-    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    // Aggiorna label e pulisci risultato
-    const nomi = { android: 'Android 🤖', ios: 'iOS 🍎' };
-    document.getElementById('tform-label').textContent =
-      'La tua email — accesso tester ' + nomi[piattaforma];
-    document.getElementById('tester-email').value = '';
-    document.getElementById('tester-result').innerHTML = '';
-    document.getElementById('tester-email').focus();
-  }
-
-  function checkTesterEmail() {
-    const email = document.getElementById('tester-email').value.trim().toLowerCase();
-    const risultato = document.getElementById('tester-result');
-
-    if (!email || !email.includes('@')) {
-      risultato.innerHTML = '<div class="tresult-err">Inserisci un indirizzo email valido.</div>';
-      return;
-    }
-
-    if (piattaformaAttiva === 'android') {
-      if (TESTER_ANDROID.includes(email)) {
-        risultato.innerHTML = `
-          <div class="tresult-ok">
-            <h4>✅ Email riconosciuta — benvenuto tester Android!</h4>
-            <a class="tresult-link primary" href="${LINK_ANDROID_TEST}" target="_blank" rel="noopener">
-              🤖&nbsp; Diventa tester su Google Play
-            </a>
-            <a class="tresult-link secondary" href="${LINK_ANDROID_GUIDA}" target="_blank" rel="noopener">
-              📄&nbsp; Scarica la guida tester (PDF)
-            </a>
-          </div>`;
-      } else {
-        risultato.innerHTML = `
-          <div class="tresult-err">
-            ❌ Email non trovata nella lista tester Android.<br>
-            Hai ricevuto un invito? Scrivi a
-            <a href="mailto:essecilab.equitazione@gmail.com">essecilab.equitazione@gmail.com</a>
-            per richiedere l'accesso.
-          </div>`;
-      }
-    } else if (piattaformaAttiva === 'ios') {
-      if (TESTER_IOS.includes(email)) {
-        if (IOS_GUIDA_PRONTA) {
-          risultato.innerHTML = `
-            <div class="tresult-ok">
-              <h4>✅ Email riconosciuta — benvenuto tester iOS!</h4>
-              <a class="tresult-link primary" href="#" target="_blank" rel="noopener">
-                🍎&nbsp; Apri in TestFlight
-              </a>
-              <a class="tresult-link secondary" href="#" target="_blank" rel="noopener">
-                📄&nbsp; Scarica la guida tester iOS (PDF)
-              </a>
-            </div>`;
-        } else {
-          risultato.innerHTML = `
-            <div class="tresult-ok">
-              <h4>✅ Email riconosciuta — sei nella lista tester iOS!</h4>
-              <p style="font-size:14px; color:var(--sub); margin-top:8px; line-height:1.6;">
-                La guida per tester iOS è in preparazione. Riceverai un'email non appena
-                il programma di test sarà attivo. Grazie per la pazienza! 🙏
-              </p>
-            </div>`;
-        }
-      } else {
-        risultato.innerHTML = `
-          <div class="tresult-err">
-            ❌ Email non trovata nella lista tester iOS.<br>
-            Hai ricevuto un invito? Scrivi a
-            <a href="mailto:essecilab.equitazione@gmail.com">essecilab.equitazione@gmail.com</a>
-            per richiedere l'accesso.
-          </div>`;
-      }
-    }
   }
 
   // Swipe touch
